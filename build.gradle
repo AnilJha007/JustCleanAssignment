@@ -7,6 +7,7 @@ buildscript {
         app_compat_version = '1.2.0'
         google_material_version = '1.2.1'
         constraint_layout_version = '2.0.4'
+        navigation_version = '2.3.2'
     }
     repositories {
         google()

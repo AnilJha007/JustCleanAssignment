@@ -17,6 +17,14 @@ abstract class BaseFragment : Fragment() {
         return inflater.inflate(getLayoutResourceId(), container, false)
     }
 
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        setPageTitle()
+    }
+
     /* override this method in fragment to attach the layout*/
     abstract fun getLayoutResourceId(): Int
+
+    /* override this method in fragment to set the title*/
+    abstract fun setPageTitle()
 }

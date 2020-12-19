@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">JustCleanAssignment</string>
+    <string name="all_posts">All Posts</string>
+    <string name="fav_posts">Favorites Posts</string>
 </resources>
