@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.View
 import com.mobile.justcleanassignment.R
 import com.mobile.justcleanassignment.base.BaseFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class PostsFragment : BaseFragment() {
 
     override fun getLayoutResourceId() = R.layout.fragment_posts

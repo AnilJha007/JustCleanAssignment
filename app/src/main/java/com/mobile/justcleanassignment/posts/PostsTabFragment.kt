@@ -4,8 +4,10 @@ import android.os.Bundle
 import android.view.View
 import com.mobile.justcleanassignment.R
 import com.mobile.justcleanassignment.base.BaseFragment
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_posts_tab.*
 
+@AndroidEntryPoint
 class PostsTabFragment : BaseFragment() {
 
     override fun getLayoutResourceId() = R.layout.fragment_posts_tab
