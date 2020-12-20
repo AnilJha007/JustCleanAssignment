@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">JustCleanAssignment</string>
+    <string name="no_internet_error">"No internet connection. Please connect and try again."</string>
+    <string name="something_went_wrong">"Something wrong. Please try again later."</string>
+
+    <!--posts screen-->
     <string name="posts">Posts</string>
     <string name="all_posts">All</string>
     <string name="fav_posts">Favorites</string>
