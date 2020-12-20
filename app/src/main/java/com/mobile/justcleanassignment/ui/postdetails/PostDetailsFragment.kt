@@ -11,6 +11,7 @@ import com.mobile.justcleanassignment.service.modal.Comment
 import com.mobile.justcleanassignment.service.modal.Post
 import com.mobile.justcleanassignment.service.utility.ApiStatus
 import com.mobile.justcleanassignment.utils.Util
+import com.mobile.justcleanassignment.utils.show
 import com.mobile.justcleanassignment.utils.snackBar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_all_posts.*
@@ -38,7 +39,16 @@ class PostDetailsFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setInitialStateData()
+        initListener()
         observeViewModel()
+    }
+
+    private fun initListener() {
+        fav_btn.setOnFavoriteChangeListener { _, favorite -> updateFavState(favorite) }
+    }
+
+    private fun updateFavState(favorite: Boolean) {
+
     }
 
     private fun setInitialStateData() {
@@ -46,6 +56,7 @@ class PostDetailsFragment : BaseFragment() {
         post?.run {
             tv_title.text = title
             tv_body.text = body
+            fav_btn.show()
         }
         spotsDialog = Util.getAlertDialog(requireContext())
         commentsAdapter = CommentsAdapter()

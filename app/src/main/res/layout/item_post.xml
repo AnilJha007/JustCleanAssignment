@@ -17,17 +17,35 @@
             android:textColor="@color/black"
             android:textSize="@dimen/_15sdp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/fav_btn"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="sunt aut facere repellat provident occaecati excepturi optio reprehenderit" />
+
+        <com.github.ivbaranov.mfb.MaterialFavoriteButton
+            android:id="@+id/fav_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_title"
+            app:layout_constraintTop_toTopOf="parent"
+            app:mfb_animate_favorite="true"
+            app:mfb_animate_unfavorite="true"
+            app:mfb_bounce_duration="300"
+            app:mfb_color="black"
+            app:mfb_padding="5"
+            app:mfb_rotation_angle="360"
+            app:mfb_rotation_duration="400"
+            app:mfb_size="48"
+            app:mfb_type="heart" />
 
         <TextView
             android:id="@+id/tv_body"
             android:layout_width="@dimen/zero_dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_10sdp"
-            android:textColor="@color/azure"
+            android:textColor="@color/grey"
             android:textSize="@dimen/_12sdp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
