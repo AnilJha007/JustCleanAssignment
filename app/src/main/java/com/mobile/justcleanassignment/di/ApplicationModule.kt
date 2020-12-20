@@ -1,6 +1,7 @@
 package com.mobile.justcleanassignment.di
 
 import com.mobile.justcleanassignment.BuildConfig
+import com.mobile.justcleanassignment.service.api.ApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -38,4 +39,8 @@ class ApplicationModule {
             .baseUrl(baseUrl)
             .client(okHttpClient)
             .build()
+
+    @Provides
+    @Singleton
+    fun provideApiService(retrofit: Retrofit): ApiService = retrofit.create(ApiService::class.java)
 }
