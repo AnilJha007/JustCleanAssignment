@@ -9,7 +9,10 @@
         android:layout_height="?attr/actionBarSize"
         app:layout_constraintTop_toTopOf="parent"
         app:tabGravity="fill"
-        app:tabMode="fixed" />
+        app:tabIndicatorColor="@color/azure"
+        app:tabMode="fixed"
+        app:tabSelectedTextColor="@color/azure"
+        app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget" />
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_pager"
