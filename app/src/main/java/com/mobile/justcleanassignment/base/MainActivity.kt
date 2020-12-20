@@ -2,9 +2,10 @@ package com.mobile.justcleanassignment.base
 
 import android.os.Bundle
 import android.view.MenuItem
-import androidx.navigation.Navigation
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
 import com.mobile.justcleanassignment.R
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {
 
@@ -17,7 +18,7 @@ class MainActivity : BaseActivity() {
 
     private fun setUpNavHostComponent() {
         setupActionBarWithNavController(
-            this, Navigation.findNavController(this, R.id.navHostFragment),
+            this, (navHostFragment as NavHostFragment).navController,
         )
     }
 

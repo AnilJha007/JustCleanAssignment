@@ -7,6 +7,6 @@
 
     <fragment
         android:id="@+id/postsDest"
-        android:name="com.mobile.justcleanassignment.posts.AllPostsFragment"
-        tools:layout="@layout/fragment_all_posts" />
+        android:name="com.mobile.justcleanassignment.posts.PostsFragment"
+        tools:layout="@layout/fragment_posts" />
 </navigation>

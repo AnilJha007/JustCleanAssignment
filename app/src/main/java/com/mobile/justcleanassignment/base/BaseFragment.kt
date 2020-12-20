@@ -26,5 +26,7 @@ abstract class BaseFragment : Fragment() {
     abstract fun getLayoutResourceId(): Int
 
     /* override this method in fragment to set the title*/
-    abstract fun setPageTitle()
+    open fun setPageTitle() {
+        // implementation is explicitly left out
+    }
 }
