@@ -1,6 +1,8 @@
 package com.mobile.justcleanassignment.di
 
 import com.mobile.justcleanassignment.BuildConfig
+import com.mobile.justcleanassignment.service.api.ApiHelper
+import com.mobile.justcleanassignment.service.api.ApiHelperImpl
 import com.mobile.justcleanassignment.service.api.ApiService
 import dagger.Module
 import dagger.Provides
@@ -43,4 +45,8 @@ class ApplicationModule {
     @Provides
     @Singleton
     fun provideApiService(retrofit: Retrofit): ApiService = retrofit.create(ApiService::class.java)
+
+    @Provides
+    @Singleton
+    fun provideApiHelper(apiHelperImpl: ApiHelperImpl): ApiHelper = apiHelperImpl
 }
