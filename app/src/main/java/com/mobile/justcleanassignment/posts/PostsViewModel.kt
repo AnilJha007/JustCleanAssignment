@@ -21,7 +21,7 @@ class PostsViewModel @ViewModelInject constructor(
     private val networkHelper: NetworkHelper
 ) : ViewModel() {
 
-    // live data for movie list
+    // live data for post list
     private val _postsMutableLiveData = MutableLiveData<Resource<MutableList<Post>>>()
     val postsMutableLiveData: LiveData<Resource<MutableList<Post>>>
         get() = _postsMutableLiveData

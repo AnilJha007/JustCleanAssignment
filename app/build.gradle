@@ -81,6 +81,9 @@ dependencies {
     // sdp sizing library
     implementation "com.intuit.sdp:sdp-android:$sdp_version"
 
+    // spot dialog progress library
+    implementation "com.github.d-max:spots-dialog:$spot_dialog_version"
+
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
