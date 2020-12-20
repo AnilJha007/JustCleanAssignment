@@ -1,4 +1,4 @@
-package com.mobile.justcleanassignment.posts
+package com.mobile.justcleanassignment.ui.posts
 
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +9,7 @@ import com.mobile.justcleanassignment.service.modal.Post
 import kotlinx.android.synthetic.main.item_post.view.*
 
 class PostsAdapter(
-    private val postItemClickListener: (Int) -> Unit
+    private val postItemClickListener: (Post) -> Unit
 ) : RecyclerView.Adapter<PostsAdapter.PostViewHolder>() {
 
     private val postList = ArrayList<Post>()
@@ -34,7 +34,7 @@ class PostsAdapter(
                     tv_body.text = body
                 }
                 setOnClickListener {
-                    postItemClickListener(post.id)
+                    postItemClickListener(post)
                 }
             }
         }

@@ -7,6 +7,22 @@
 
     <fragment
         android:id="@+id/postsDest"
-        android:name="com.mobile.justcleanassignment.posts.PostsFragment"
-        tools:layout="@layout/fragment_posts" />
+        android:name="com.mobile.justcleanassignment.ui.posts.PostsFragment"
+        tools:layout="@layout/fragment_posts">
+
+        <action
+            android:id="@+id/postToPostDetails"
+            app:destination="@+id/postDetailsDest" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/postDetailsDest"
+        android:name="com.mobile.justcleanassignment.ui.postdetails.PostDetailsFragment"
+        tools:layout="@layout/fragment_post_details">
+
+        <argument
+            android:name="post"
+            app:argType="com.mobile.justcleanassignment.service.modal.Post"
+            app:nullable="false" />
+    </fragment>
 </navigation>

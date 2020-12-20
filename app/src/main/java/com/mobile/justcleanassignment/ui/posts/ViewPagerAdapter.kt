@@ -1,4 +1,4 @@
-package com.mobile.justcleanassignment.posts
+package com.mobile.justcleanassignment.ui.posts
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager

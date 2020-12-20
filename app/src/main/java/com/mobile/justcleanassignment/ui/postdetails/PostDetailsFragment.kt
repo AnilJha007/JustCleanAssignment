@@ -1,4 +1,4 @@
-package com.mobile.justcleanassignment.posts
+package com.mobile.justcleanassignment.ui.postdetails
 
 import android.app.AlertDialog
 import android.os.Bundle
@@ -7,47 +7,63 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mobile.justcleanassignment.R
 import com.mobile.justcleanassignment.base.BaseFragment
+import com.mobile.justcleanassignment.service.modal.Comment
 import com.mobile.justcleanassignment.service.modal.Post
 import com.mobile.justcleanassignment.service.utility.ApiStatus
-import com.mobile.justcleanassignment.utils.Util.getAlertDialog
+import com.mobile.justcleanassignment.utils.Util
 import com.mobile.justcleanassignment.utils.snackBar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_all_posts.*
+import kotlinx.android.synthetic.main.fragment_post_details.*
+import kotlinx.android.synthetic.main.item_post.*
 
 @AndroidEntryPoint
-class AllPostsFragment : BaseFragment() {
+class PostDetailsFragment : BaseFragment() {
 
-    private val postsViewModel: PostsViewModel by viewModels()
-    private lateinit var postsAdapter: PostsAdapter
+    private var post: Post? = null
     private lateinit var spotsDialog: AlertDialog
+    private lateinit var commentsAdapter: CommentsAdapter
+    private val commentsViewModel: CommentsViewModel by viewModels()
 
-    override fun getLayoutResourceId() = R.layout.fragment_all_posts
+    companion object {
+        const val ARGS_POST = "post"
+    }
+
+    override fun setPageTitle() {
+        activity?.title = getString(R.string.post_details)
+    }
+
+    override fun getLayoutResourceId() = R.layout.fragment_post_details
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setInitStateData()
+        setInitialStateData()
         observeViewModel()
     }
 
-    private fun setInitStateData() {
-        spotsDialog = getAlertDialog(requireContext())
-        postsAdapter = PostsAdapter(::handleItemClick)
-        recycler_view_all_posts.apply {
+    private fun setInitialStateData() {
+        post = arguments?.getParcelable(ARGS_POST)
+        post?.run {
+            tv_title.text = title
+            tv_body.text = body
+        }
+        spotsDialog = Util.getAlertDialog(requireContext())
+        commentsAdapter = CommentsAdapter()
+        recycler_view_comments.apply {
             layoutManager = LinearLayoutManager(requireContext())
             setHasFixedSize(false)
-            adapter = postsAdapter
+            adapter = commentsAdapter
         }
     }
 
-    private fun handleItemClick(postId: Int) {
-    }
-
     private fun observeViewModel() {
-        postsViewModel.postsMutableLiveData.observe(viewLifecycleOwner, { res ->
+        commentsViewModel.commentsMutableLiveData.observe(viewLifecycleOwner, { res ->
             when (res.status) {
                 ApiStatus.LOADING -> {
-                    if (::spotsDialog.isInitialized)
+                    if (::spotsDialog.isInitialized && !commentsViewModel.isLoadedFirstTime) {
+                        commentsViewModel.isLoadedFirstTime = true
                         spotsDialog.show()
+                    }
                 }
                 ApiStatus.SUCCESS -> {
                     if (::spotsDialog.isInitialized && spotsDialog.isShowing)
@@ -64,9 +80,10 @@ class AllPostsFragment : BaseFragment() {
                 }
             }
         })
+        post?.let { commentsViewModel.getComments(it.id) }
     }
 
-    private fun setData(posts: MutableList<Post>) {
-        postsAdapter.updateData(posts)
+    private fun setData(comments: MutableList<Comment>) {
+        commentsAdapter.updateData(comments)
     }
 }

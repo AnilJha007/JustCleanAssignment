@@ -1,4 +1,4 @@
-package com.mobile.justcleanassignment.posts
+package com.mobile.justcleanassignment.ui.posts
 
 import android.os.Bundle
 import android.view.View

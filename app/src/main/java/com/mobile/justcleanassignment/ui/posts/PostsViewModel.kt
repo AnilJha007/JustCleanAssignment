@@ -1,4 +1,4 @@
-package com.mobile.justcleanassignment.posts
+package com.mobile.justcleanassignment.ui.posts
 
 import android.content.Context
 import androidx.hilt.lifecycle.ViewModelInject
@@ -20,6 +20,8 @@ class PostsViewModel @ViewModelInject constructor(
     private val repository: PostRepository,
     private val networkHelper: NetworkHelper
 ) : ViewModel() {
+
+    var isLoadedFirstTime = false
 
     // live data for post list
     private val _postsMutableLiveData = MutableLiveData<Resource<MutableList<Post>>>()

@@ -1,4 +1,4 @@
-package com.mobile.justcleanassignment.posts
+package com.mobile.justcleanassignment.ui.posts
 
 import com.mobile.justcleanassignment.R
 import com.mobile.justcleanassignment.base.BaseFragment
