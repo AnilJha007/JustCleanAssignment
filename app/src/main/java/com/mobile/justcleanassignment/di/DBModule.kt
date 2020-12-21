@@ -2,6 +2,7 @@ package com.mobile.justcleanassignment.di
 
 import android.content.Context
 import com.mobile.justcleanassignment.service.database.AppDatabase
+import com.mobile.justcleanassignment.service.database.dao.CommentDao
 import com.mobile.justcleanassignment.service.database.dao.PostDao
 import com.mobile.justcleanassignment.service.repository.LocalDBRepository
 import dagger.Module
@@ -15,9 +16,14 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 class DBModule {
 
     @Provides
-    fun provideMovieDao(@ApplicationContext context: Context) =
+    fun providePostDao(@ApplicationContext context: Context) =
         AppDatabase.getInstance(context).postDao()
 
     @Provides
-    fun provideMovieRepository(postDao: PostDao) = LocalDBRepository(postDao)
+    fun provideCommentDao(@ApplicationContext context: Context) =
+        AppDatabase.getInstance(context).commentDao()
+
+    @Provides
+    fun provideLocalDBRepository(postDao: PostDao, commentDao: CommentDao) =
+        LocalDBRepository(postDao, commentDao)
 }

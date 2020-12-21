@@ -11,7 +11,7 @@ import com.mobile.justcleanassignment.service.modal.Post
 interface PostDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAllPosts(movies: MutableList<Post>): List<Long>
+    suspend fun insertAllPosts(posts: MutableList<Post>): List<Long>
 
     @Query("SELECT * FROM post_list")
     fun getAllPosts(): LiveData<MutableList<Post>>

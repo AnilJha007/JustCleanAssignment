@@ -60,7 +60,6 @@ class PostsViewModel @ViewModelInject constructor(
 
     private fun setPostsData(response: Response<ArrayList<Post>>) {
         if (response.isSuccessful) {
-            _postsMediatorLiveData.postValue(Resource.success(response.body()))
             viewModelScope.launch {
                 response.body()?.let {
                     localDBRepository.insertAllPosts(it)
