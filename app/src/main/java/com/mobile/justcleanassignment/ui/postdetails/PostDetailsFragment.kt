@@ -14,7 +14,6 @@ import com.mobile.justcleanassignment.utils.Util
 import com.mobile.justcleanassignment.utils.show
 import com.mobile.justcleanassignment.utils.snackBar
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_all_posts.*
 import kotlinx.android.synthetic.main.fragment_post_details.*
 import kotlinx.android.synthetic.main.item_post.*
 
@@ -56,6 +55,7 @@ class PostDetailsFragment : BaseFragment() {
         post?.run {
             tv_title.text = title
             tv_body.text = body
+            fav_btn.isFavorite = isFavorite
             fav_btn.show()
         }
         spotsDialog = Util.getAlertDialog(requireContext())
@@ -87,7 +87,7 @@ class PostDetailsFragment : BaseFragment() {
                 ApiStatus.ERROR -> {
                     if (::spotsDialog.isInitialized && spotsDialog.isShowing)
                         spotsDialog.hide()
-                    constraint_all_posts?.snackBar(res.message!!)
+                    constraint_post_details?.snackBar(res.message!!)
                 }
             }
         })

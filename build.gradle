@@ -18,6 +18,8 @@ buildscript {
         fragment_ktx_version = '1.2.5'
         sdp_version = '1.0.6'
         spot_dialog_version = '1.1@aar'
+        material_fav_version = '0.1.5'
+        room_version = '2.2.6'
     }
     repositories {
         google()

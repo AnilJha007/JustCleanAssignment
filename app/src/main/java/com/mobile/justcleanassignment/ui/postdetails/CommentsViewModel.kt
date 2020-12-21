@@ -9,7 +9,7 @@ import androidx.lifecycle.viewModelScope
 import com.bharatagri.mobile.service.utility.NetworkHelper
 import com.mobile.justcleanassignment.R
 import com.mobile.justcleanassignment.service.modal.Comment
-import com.mobile.justcleanassignment.service.repository.PostRepository
+import com.mobile.justcleanassignment.service.repository.RemoteRepository
 import com.mobile.justcleanassignment.service.utility.Resource
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.launch
@@ -17,7 +17,7 @@ import retrofit2.Response
 
 class CommentsViewModel @ViewModelInject constructor(
     @ApplicationContext private val context: Context,
-    private val repository: PostRepository,
+    private val repository: RemoteRepository,
     private val networkHelper: NetworkHelper
 ) : ViewModel() {
 
