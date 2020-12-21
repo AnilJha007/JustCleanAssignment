@@ -13,4 +13,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/item_post" />
+
+    <TextView
+        android:id="@+id/no_fav_yet"
+        style="@style/ZeroDpStyle"
+        android:gravity="center"
+        android:padding="@dimen/_20sdp"
+        android:text="@string/no_fav_posts"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_16sdp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

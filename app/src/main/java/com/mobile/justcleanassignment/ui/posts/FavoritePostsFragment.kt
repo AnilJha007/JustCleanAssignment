@@ -52,6 +52,9 @@ class FavoritePostsFragment : BaseFragment() {
     }
 
     private fun setData(posts: MutableList<Post>) {
-        postsAdapter.updateData(posts)
+        no_fav_yet.visibility = if (posts.size > 0) {
+            postsAdapter.updateData(posts)
+            View.GONE
+        } else View.VISIBLE
     }
 }

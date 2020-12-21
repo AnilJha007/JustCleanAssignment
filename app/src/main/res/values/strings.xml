@@ -7,6 +7,7 @@
     <string name="posts">Posts</string>
     <string name="all_posts">All</string>
     <string name="fav_posts">Favorites</string>
+    <string name="no_fav_posts">You\'ve not marked any post as favorite yet.</string>
 
     <!--post details screen-->
     <string name="post_details">Post Details</string>
