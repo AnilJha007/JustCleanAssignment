@@ -10,9 +10,15 @@ import com.mobile.justcleanassignment.service.modal.Post
 @Dao
 interface PostDao {
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertAllPosts(posts: MutableList<Post>): List<Long>
 
     @Query("SELECT * FROM post_list")
     fun getAllPosts(): LiveData<MutableList<Post>>
+
+    @Query("UPDATE post_list SET isFavorite = :isFav WHERE id = :postId")
+    suspend fun updatePost(postId: Int, isFav: Boolean): Int
+
+    @Query("SELECT * FROM post_list WHERE isFavorite = 1")
+    fun getAllFavPosts(): LiveData<MutableList<Post>>
 }

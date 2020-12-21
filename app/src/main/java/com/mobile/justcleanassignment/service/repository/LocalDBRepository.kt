@@ -16,6 +16,10 @@ class LocalDBRepository @Inject constructor(
 
     fun getPosts() = postDao.getAllPosts()
 
+    fun getAllFavPosts() = postDao.getAllFavPosts()
+
+    suspend fun updatePost(postId: Int, isFav: Boolean) = postDao.updatePost(postId, isFav)
+
     suspend fun insertAllComments(comments: MutableList<Comment>) =
         commentDao.insertAllComments(comments)
 

@@ -69,4 +69,8 @@ class PostsViewModel @ViewModelInject constructor(
             _postsMediatorLiveData.postValue(Resource.error(response.errorBody().toString(), null))
         }
     }
+
+    fun getAllFavoritesPosts(): LiveData<MutableList<Post>> {
+        return localDBRepository.getAllFavPosts()
+    }
 }

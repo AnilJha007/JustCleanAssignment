@@ -23,10 +23,12 @@ class PostDetailsFragment : BaseFragment() {
     private var post: Post? = null
     private lateinit var spotsDialog: AlertDialog
     private lateinit var commentsAdapter: CommentsAdapter
-    private val commentsViewModel: CommentsViewModel by viewModels()
+    private val postDetailsViewModel: PostDetailsViewModel by viewModels()
 
     companion object {
         const val ARGS_POST = "post"
+        const val POST_ID = "post_id"
+        const val IS_FAV = "is_fav"
     }
 
     override fun setPageTitle() {
@@ -46,8 +48,10 @@ class PostDetailsFragment : BaseFragment() {
         fav_btn.setOnFavoriteChangeListener { _, favorite -> updateFavState(favorite) }
     }
 
-    private fun updateFavState(favorite: Boolean) {
-
+    private fun updateFavState(newFav: Boolean) {
+        post?.let {
+            postDetailsViewModel.updatePostFavStatus(it.id, newFav)
+        }
     }
 
     private fun setInitialStateData() {
@@ -68,11 +72,11 @@ class PostDetailsFragment : BaseFragment() {
     }
 
     private fun observeViewModel() {
-        commentsViewModel.commentsMutableLiveData.observe(viewLifecycleOwner, { res ->
+        postDetailsViewModel.commentsMutableLiveData.observe(viewLifecycleOwner, { res ->
             when (res.status) {
                 ApiStatus.LOADING -> {
-                    if (::spotsDialog.isInitialized && !commentsViewModel.isLoadedFirstTime) {
-                        commentsViewModel.isLoadedFirstTime = true
+                    if (::spotsDialog.isInitialized && !postDetailsViewModel.isLoadedFirstTime) {
+                        postDetailsViewModel.isLoadedFirstTime = true
                         spotsDialog.show()
                     }
                 }
@@ -91,7 +95,7 @@ class PostDetailsFragment : BaseFragment() {
                 }
             }
         })
-        post?.let { commentsViewModel.getComments(it.id) }
+        post?.let { postDetailsViewModel.getComments(it.id) }
     }
 
     private fun setData(comments: MutableList<Comment>) {
